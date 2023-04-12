@@ -6,11 +6,19 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
 def open_json():
+    """
+    Вызывает и раскрывает библиотеку с удаленного сервера
+    """
     file = requests.get("https://jsonkeeper.com/b/Y2QV", verify=False)
     return file.json()
 
 
 def class_assignment(list_):
+    """
+    Присваевает классу "Operation" каждый элемент библиотеки.
+    :param list_: Библиотека
+    :return: Список элементов класса
+    """
     list_of_transaktions = []
     for element in list_:
         list_of_transaktions.append(Operetion(element['state'],
@@ -24,17 +32,23 @@ def class_assignment(list_):
 
 
 def sort_list(list_):
+    """
+    Возвращает список элементов класса отсортированных по дате,
+    от последней операции к самой стаарой.
+    """
     return sorted(list_, key=lambda element: element.date, reverse=True)
 
 
 def print_operations(list_):
+    """
+    Выводит на экран 5 последних выполненных операций
+    """
     list_ = sort_list(list_)
     count = 0
-    num = 0
-    while count < 5:
-        element = list_[num]
+    for element in list_:
         if element.state == "EXECUTED":
             element.separetion()
             print(element.print_operation())
             count += 1
-        num += 1
+        if count == 5:
+            break
