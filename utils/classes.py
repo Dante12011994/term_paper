@@ -14,6 +14,7 @@ class Operetion:
         self.from_ = from_
         self.to = to
 
+
     def separetion(self):
         """
         Маскирует номера отправителя и получателя, в зависимости карта это или счет.
@@ -56,10 +57,8 @@ class Operetion:
                                   number_card_to[4:6] + '**' + \
                                   ' ' + '****' + ' ' + number_card_to[-4:]
             self.to = tupe_card_to + number_card_to
-        else:
-            self.to = 'Снятие через банкомат'
 
-    def print_operation(self):
+    def return_operation(self):
         """
         Возвращаем информацию в нужной нам форме
         """
