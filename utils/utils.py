@@ -5,11 +5,13 @@ from utils.classes import Operetion
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
-def open_json():
+
+
+def open_json(adres):
     """
     Вызывает и раскрывает библиотеку с удаленного сервера
     """
-    file = requests.get("https://jsonkeeper.com/b/Y2QV", verify=False)
+    file = requests.get(adres, verify=False)
     return file.json()
 
 
@@ -45,10 +47,12 @@ def print_operations(list_):
     """
     list_ = sort_list(list_)
     count = 0
+    x = ""
     for element in list_:
         if element.state == "EXECUTED":
             element.separetion()
-            print(element.print_operation())
             count += 1
+            x += element.return_operation()
         if count == 5:
             break
+    return x
