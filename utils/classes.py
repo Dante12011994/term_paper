@@ -65,4 +65,5 @@ class Operetion:
         return f'''{self.date.strftime('%d.%m.%Y')} {self.description}
 {self.from_}-> {self.to}
 {self.amount} {self.name}
+
 '''

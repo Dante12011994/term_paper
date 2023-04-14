@@ -9,4 +9,4 @@ list_operations = open_json(adres)
 list_operations = class_assignment(list_operations)
 
 # Выводим необходимую инфомацию
-print_operations(list_operations)
+print(print_operations(list_operations))

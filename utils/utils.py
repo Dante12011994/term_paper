@@ -47,10 +47,12 @@ def print_operations(list_):
     """
     list_ = sort_list(list_)
     count = 0
+    x = ""
     for element in list_:
         if element.state == "EXECUTED":
             element.separetion()
-            print(element.return_operation())
             count += 1
+            x += element.return_operation()
         if count == 5:
             break
+    return x
